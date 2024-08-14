@@ -1,0 +1,37 @@
+Redhat / CentOS / Fedora Linux Open Port
+
+Red Hat Enterprise Linux 3 / 4 / 5 and above
+=> Old Red hat Linux version
+=> CentOS 4 and above
+=> Fedora Linux
+
+1) Open port 80
+
+Open flle /etc/sysconfig/iptables:
+# vi /etc/sysconfig/iptables
+Append rule as follows:
+-A RH-Firewall-1-INPUT -m state –state NEW -m tcp -p tcp –dport 80 -j ACCEPT
+Save and close the file. Restart iptables:
+# /etc/init.d/iptables restart
+
+2)Open port 110
+
+Append rule as follows:
+-A RH-Firewall-1-INPUT -m state –state NEW -m tcp -p tcp –dport 110 -j ACCEPT
+
+3)Open port 143
+
+Append rule as follows:
+-A RH-Firewall-1-INPUT -m state –state NEW -m tcp -p tcp –dport 143 -j ACCEPT
+Restart iptables service
+
+Type the following command:
+# service iptables restart
+
+Verify that port is open Run following command:
+netstat -tulpn | less
+Make sure iptables is allowing port 80 / 110 / 143 connections:
+iptables -L -n
+
+Refer to iptables man page for more information about iptables usage and syntax:
+man iptables
