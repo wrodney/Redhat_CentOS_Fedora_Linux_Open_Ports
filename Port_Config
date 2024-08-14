@@ -35,3 +35,14 @@ iptables -L -n
 
 Refer to iptables man page for more information about iptables usage and syntax:
 man iptables
+===
+===
+Commands- To add port - for example httpd firewall-cmd --permanent --add-port=80/tcp
+
+To remove port firewall-cmd --permanent --remove-port=80/tcp
+
+To reload firewall firewall-cmd --complete-reload
+
+To add multiple ports at once - firewall-cmd --permanent --add-port={80,110,3306}/tcp
+
+To check status of open ports firewall-cmd --list-all
